@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Oral SES — Travail & Chômage</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a24;
+    --ink-2: #252535;
+    --ink-3: #2e2e42;
+    --paper: #f2ede4;
+    --paper-2: #e8e2d6;
+    --paper-3: #ddd6c8;
+    --rouge: #c23b22;
+    --rouge-light: #d9634d;
+    --vert: #2a6b4a;
+    --vert-light: #3d9166;
+    --ocre: #b07d2a;
+    --text-on-dark: #e4dfd4;
+    --muted: #7a7468;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--text-on-dark);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--paper);
+    color: var(--ink);
+    border-bottom: 4px solid var(--rouge);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 2rem;
+    background: var(--ink);
+    border-bottom: 1px solid var(--ink-3);
+  }
+
+  .header-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rouge-light);
+  }
+
+  .header-ref {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: #555;
+    letter-spacing: 0.05em;
+  }
+
+  .header-main {
+    padding: 1.4rem 2rem 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .header-accent-bar {
+    width: 4px;
+    min-height: 60px;
+    background: var(--rouge);
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  header h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+    color: var(--ink);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  header h1 em {
+    font-style: italic;
+    color: var(--rouge);
+  }
+
+  .header-subject {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  nav {
+    display: flex;
+    background: var(--paper-2);
+    border-top: 1px solid var(--paper-3);
+    padding: 0 2rem;
+  }
+
+  nav button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.6rem;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    color: var(--ink-3);
+  }
+
+  nav button:hover { color: var(--rouge); }
+  nav button.active {
+    color: var(--rouge);
+    border-bottom: 3px solid var(--rouge);
+    font-weight: 600;
+  }
+
+  /* ── LAYOUT ── */
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  .tab-content { display: none; animation: fadeIn 0.3s ease; }
+  .tab-content.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ══════════════════════════════
+     TAB 1 : PLAN
+  ══════════════════════════════ */
+  .plan-header-note {
+    background: var(--ink-2);
+    border: 1px solid var(--ink-3);
+    border-left: 3px solid var(--ocre);
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.83rem;
+    color: #a8a090;
+    font-family: 'Space Mono', monospace;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .plan-section { margin-bottom: 2.5rem; }
+
+  .plan-section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .plan-roman {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--rouge);
+    min-width: 28px;
+  }
+
+  .plan-section-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.05rem;
+    color: var(--paper);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .plan-timing {
+    margin-left: auto;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--ocre);
+    background: rgba(176,125,42,0.12);
+    border: 1px solid rgba(176,125,42,0.25);
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .plan-divider {
+    height: 1px;
+    background: linear-gradient(to right, var(--rouge), transparent);
+    margin-bottom: 1.2rem;
+    opacity: 0.4;
+  }
+
+  .plan-sub {
+    padding: 0.7rem 1rem 0.7rem 1.2rem;
+    margin-bottom: 0.5rem;
+    background: var(--ink-2);
+    border-radius: 4px;
+    border: 1px solid var(--ink-3);
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+  }
+
+  .plan-sub-letter {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    color: var(--rouge-light);
+    font-size: 0.9rem;
+    min-width: 16px;
+    margin-top: 1px;
+  }
+
+  .plan-sub-content strong {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--paper);
+    margin-bottom: 0.2rem;
+  }
+
+  .plan-sub-content span {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .plan-keyword-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+
+  .kw {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    background: var(--ink-3);
+    color: #a8a090;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    border: 1px solid #3a3a50;
+  }
+
+  .kw.rouge { background: rgba(194,59,34,0.15); color: var(--rouge-light); border-color: rgba(194,59,34,0.3); }
+  .kw.vert { background: rgba(42,107,74,0.15); color: var(--vert-light); border-color: rgba(42,107,74,0.3); }
+
+  .plan-arrow {
+    text-align: center;
+    padding: 0.8rem 0;
+    color: var(--rouge);
+    font-size: 0.9rem;
+    opacity: 0.5;
+  }
+
+  .plan-conclusion {
+    background: linear-gradient(135deg, var(--ink-2), var(--ink-3));
+    border: 1px solid #3a3a50;
+    border-top: 2px solid var(--rouge);
+    border-radius: 4px;
+    padding: 1.2rem 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .plan-conclusion-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    margin-bottom: 0.8rem;
+  }
+
+  .plan-conclusion p {
+    font-size: 0.85rem;
+    color: #b8b0a4;
+    line-height: 1.7;
+  }
+
+  .plan-conclusion strong { color: var(--paper); font-weight: 500; }
+
+  /* ══════════════════════════════
+     TAB 2 : DISCOURS
+  ══════════════════════════════ */
+  .speech-block { margin-bottom: 3.5rem; }
+
+  .speech-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+  }
+
+  .speech-eyebrow.intro { color: var(--ocre); }
+  .speech-eyebrow.partie { color: var(--rouge-light); }
+  .speech-eyebrow.conclu { color: var(--vert-light); }
+  .speech-eyebrow.trans { color: #8080a8; }
+
+  .speech-eyebrow::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .speech-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.15rem;
+    color: var(--paper);
+    margin-bottom: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .speech-subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rouge-light);
+    margin: 1.6rem 0 0.6rem;
+    opacity: 0.8;
+  }
+
+  .speech-text {
+    font-size: 0.92rem;
+    color: #c8c0b4;
+    line-height: 1.9;
+  }
+
+  .speech-text p { margin-bottom: 1rem; }
+
+  .speech-text strong { color: var(--paper); font-weight: 500; }
+
+  .speech-text em { color: var(--ocre); font-style: italic; }
+
+  .highlight-box {
+    background: var(--ink-2);
+    border-left: 3px solid var(--rouge);
+    padding: 0.8rem 1.1rem;
+    margin: 1.1rem 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.88rem;
+    color: #c4bcb0;
+    line-height: 1.7;
+  }
+
+  .highlight-box.vert { border-left-color: var(--vert); }
+  .highlight-box.ocre { border-left-color: var(--ocre); }
+
+  .def-box {
+    background: rgba(176,125,42,0.08);
+    border: 1px solid rgba(176,125,42,0.2);
+    border-radius: 4px;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.76rem;
+    color: #c8b880;
+    line-height: 1.6;
+  }
+
+  .def-box .def-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ocre);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .transition-box {
+    background: linear-gradient(135deg, #1a1a2e, #161624);
+    border: 1px solid #32324a;
+    border-left: 3px solid #6060a0;
+    padding: 1.1rem 1.4rem;
+    margin: 2rem 0;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .transition-box .trans-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #6060a0;
+    margin-bottom: 0.5rem;
+  }
+
+  .transition-box p {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    color: #b0b0d0;
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  .speech-hr {
+    border: none;
+    border-top: 1px solid var(--ink-3);
+    margin: 2.5rem 0;
+  }
+
+  .politique-tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    margin: 0 0.2rem;
+    vertical-align: middle;
+  }
+
+  .pt-rouge { background: rgba(194,59,34,0.15); color: var(--rouge-light); border: 1px solid rgba(194,59,34,0.3); }
+  .pt-vert { background: rgba(42,107,74,0.15); color: var(--vert-light); border: 1px solid rgba(42,107,74,0.3); }
+  .pt-ocre { background: rgba(176,125,42,0.15); color: #d4a044; border: 1px solid rgba(176,125,42,0.3); }
+
+  /* ══════════════════════════════
+     TAB 3 : QUESTIONS
+  ══════════════════════════════ */
+  .q-intro {
+    background: var(--ink-2);
+    border: 1px solid var(--ink-3);
+    border-left: 3px solid var(--vert);
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.83rem;
+    color: #a0a090;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .q-cat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .q-cat-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--ink-3);
+  }
+
+  .q-cat { margin-bottom: 2.5rem; }
+
+  .q-item {
+    background: var(--ink-2);
+    border: 1px solid var(--ink-3);
+    border-radius: 4px;
+    margin-bottom: 0.7rem;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .q-item:hover { border-color: #3a3a50; }
+
+  .q-header {
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    user-select: none;
+  }
+
+  .q-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--rouge);
+    min-width: 24px;
+    margin-top: 2px;
+  }
+
+  .q-text {
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--paper);
+    line-height: 1.5;
+  }
+
+  .q-chevron {
+    color: var(--muted);
+    font-size: 0.9rem;
+    transition: transform 0.25s;
+    min-width: 14px;
+  }
+
+  .q-item.open .q-chevron { transform: rotate(180deg); color: var(--rouge); }
+
+  .q-answer {
+    display: none;
+    padding: 0.8rem 1.2rem 1rem 3.2rem;
+    font-size: 0.84rem;
+    color: #a0988c;
+    line-height: 1.8;
+    border-top: 1px solid var(--ink-3);
+  }
+
+  .q-item.open .q-answer { display: block; }
+  .q-answer strong { color: #c8c0b4; font-weight: 500; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--ink-3); border-radius: 2px; }
+
+  @media (max-width: 600px) {
+    .header-main { padding: 1rem 1rem 0.8rem; gap: 0.8rem; }
+    nav button { padding: 0.8rem 1rem; font-size: 0.68rem; }
+    .plan-section-header { flex-wrap: wrap; }
+    .plan-timing { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <span class="header-label">Grand Oral · Sciences Économiques et Sociales</span>
+    <span class="header-ref">10 min présentation · 10 min questions</span>
+  </div>
+  <div class="header-main">
+    <div class="header-accent-bar"></div>
+    <div>
+      <h1>Faut-il <em>repenser le travail</em> pour réduire le chômage ?</h1>
+      <div class="header-subject">Marché du travail · Politiques de l'emploi · Chômage structurel & conjoncturel</div>
+    </div>
+  </div>
+  <nav>
+    <button class="active" onclick="showTab('plan', this)">📋 Plan</button>
+    <button onclick="showTab('discours', this)">🎙️ Discours</button>
+    <button onclick="showTab('questions', this)">❓ Questions du jury</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ════════════════════════════════════════
+     TAB 1 : PLAN
+════════════════════════════════════════ -->
+<div id="plan" class="tab-content active">
+
+  <div class="plan-header-note">
+    Fiche synthétique pour les 20 min de préparation — minutage sur 10 min de présentation.
+    Chaque partie doit durer environ 2 min 30.
+  </div>
+
+  <!-- INTRO -->
+  <div class="plan-section">
+    <div class="plan-section-header">
+      <div class="plan-roman">—</div>
+      <div class="plan-section-title">Introduction</div>
+      <div class="plan-timing">⏱ 1 min 30</div>
+    </div>
+    <div class="plan-divider"></div>
+
+    <div class="plan-sub">
+      <div class="plan-sub-letter">↗</div>
+      <div class="plan-sub-content">
+        <strong>Accroche</strong>
+        <span>Le chômage en France : un problème économique et social persistant malgré des décennies de réformes</span>
+      </div>
+    </div>
+    <div class="plan-sub">
+      <div class="plan-sub-letter">📖</div>
+      <div class="plan-sub-content">
+        <strong>Définitions clés</strong>
+        <span>Taux de chômage · Taux d'emploi · Sous-emploi · Chômage structurel vs conjoncturel</span>
+        <div class="plan-keyword-row">
+          <span class="kw rouge">chômeur BIT</span>
+          <span class="kw">population active</span>
+          <span class="kw vert">sous-emploi</span>
+        </div>
+      </div>
+    </div>
+    <div class="plan-sub">
+      <div class="plan-sub-letter">❓</div>
+      <div class="plan-sub-content">
+        <strong>Problématique</strong>
+        <span>Faut-il repenser le travail pour réduire le chômage ?</span>
+      </div>
+    </div>
+    <div class="plan-sub">
+      <div class="plan-sub-letter">→</div>
+      <div class="plan-sub-content">
+        <strong>Annonce du plan</strong>
+        <span>I. Repenser le travail peut favoriser l'emploi · II. Ces transformations peuvent générer de la précarité · III. Il faut distinguer chômage conjoncturel et structurel</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="plan-arrow">↓</div>
+
+  <!-- PARTIE I -->
+  <div class="plan-section">
+    <div class="plan-section-header">
+      <div class="plan-roman">I.</div>
+      <div class="plan-section-title">Repenser le travail peut favoriser l'emploi</div>
+      <div class="plan-timing">⏱ 2 min 30</div>
+    </div>
+    <div class="plan-divider"></div>
+
+    <div class="plan-sub">
+      <div class="plan-sub-letter">A</div>
+      <div class="plan-sub-content">
+        <strong>Le partage du temps de travail — les 35 heures</strong>
+        <span>Aubry (1998-2000) · Logique de partage du travail · Réduire la durée pour créer des embauches</span>
+        <div class="plan-keyword-row">
+          <span class="kw rouge">35h · Jospin</span>
+          <span class="kw">partage du travail</span>
+          <span class="kw">durée légale</span>
+        </div>
+      </div>
+    </div>
+    <div class="plan-sub">
+      <div class="plan-sub-letter">B</div>
+      <div class="plan-sub-content">
+        <strong>Réduire le coût du travail — le CICE</strong>
+        <span>Hollande · Politique de l'offre · Allègements de charges pour inciter à l'embauche</span>
+        <div class="plan-keyword-row">
+          <span class="kw rouge">CICE</span>
+          <span class="kw">politique de l'offre</span>
+          <span class="kw">coût du travail</span>
+          <span class="kw vert">cotisations patronales</span>
+        </div>
+      </div>
+    </div>
+    <div class="plan-sub">
+      <div class="plan-sub-letter">C</div>
+      <div class="plan-sub-content">
+        <strong>La formation et l'apprentissage — réforme Pénicaud 2018</strong>
+        <span>Macron · Lutter contre le chômage structurel · Appariement offre/demande de travail</span>
+        <div class="plan-keyword-row">
+          <span class="kw rouge">apprentissage</span>
+          <span class="kw">chômage structurel</span>
+          <span class="kw vert">appariement</span>
+          <span class="kw">qualifications</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="plan-arrow">↓</div>
+
+  <!-- PARTIE II -->
+  <div class="plan-section">
+    <div class="plan-section-header">
+      <div class="plan-roman">II.</div>
+      <div class="plan-section-title">Ces transformations peuvent générer de la précarité</div>
+      <div class="plan-timing">⏱ 2 min 30</div>
+    </div>
+    <div class="plan-divider"></div>
+
+    <div class="plan-sub">
+      <div class="plan-sub-letter">A</div>
+      <div class="plan-sub-content">
+        <strong>Le CPE — flexibilité contre protection</strong>
+        <span>De Villepin (2006) · Retiré sous pression sociale · Tension flexibilité / sécurité des travailleurs</span>
+        <div class="plan-keyword-row">
+          <span class="kw rouge">CPE · 2006</span>
+          <span class="kw">flexibilité</span>
+          <span class="kw">précarité</span>
+          <span class="kw vert">protection salariale</span>
+        </div>
+      </div>
+    </div>
+    <div class="plan-sub">
+      <div class="plan-sub-letter">B</div>
+      <div class="plan-sub-content">
+        <strong>Loi El Khomri & ordonnances Macron — flexibilisation du droit du travail</strong>
+        <span>2016-2017 · Accords d'entreprise · Débat rigidité vs souplesse du marché du travail</span>
+        <div class="plan-keyword-row">
+          <span class="kw rouge">loi El Khomri</span>
+          <span class="kw">ordonnances Travail</span>
+          <span class="kw">négociation collective</span>
+        </div>
+      </div>
+    </div>
+    <div class="plan-sub">
+      <div class="plan-sub-letter">C</div>
+      <div class="plan-sub-content">
+        <strong>L'ubérisation — emplois sans protection sociale</strong>
+        <span>Auto-entrepreneuriat · Travailleurs des plateformes · Réduire le chômage visible ≠ réduire la pauvreté</span>
+        <div class="plan-keyword-row">
+          <span class="kw rouge">ubérisation</span>
+          <span class="kw">travailleurs pauvres</span>
+          <span class="kw vert">sous-emploi</span>
+          <span class="kw">statut indépendant</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="plan-arrow">↓</div>
+
+  <!-- PARTIE III -->
+  <div class="plan-section">
+    <div class="plan-section-header">
+      <div class="plan-roman">III.</div>
+      <div class="plan-section-title">Dépasser la flexibilité : conjoncturel, structurel et mutations à venir</div>
+      <div class="plan-timing">⏱ 2 min 30</div>
+    </div>
+    <div class="plan-divider"></div>
+
+    <div class="plan-sub">
+      <div class="plan-sub-letter">A</div>
+      <div class="plan-sub-content">
+        <strong>Chômage conjoncturel — agir sur la demande globale</strong>
+        <span>Lié à la conjoncture économique · Politiques de relance (investissement public, soutien à la conso) · Chômage partiel comme filet de sécurité</span>
+        <div class="plan-keyword-row">
+          <span class="kw rouge">demande globale</span>
+          <span class="kw">politique keynésienne</span>
+          <span class="kw vert">chômage partiel</span>
+        </div>
+      </div>
+    </div>
+    <div class="plan-sub">
+      <div class="plan-sub-letter">B</div>
+      <div class="plan-sub-content">
+        <strong>Chômage structurel — réformes de long terme</strong>
+        <span>Inadéquation qualifications/besoins · Mismatch géographique · Formation, reconversion, mobilité</span>
+        <div class="plan-keyword-row">
+          <span class="kw rouge">chômage structurel</span>
+          <span class="kw">mismatch</span>
+          <span class="kw vert">reconversion</span>
+          <span class="kw">mobilité</span>
+        </div>
+      </div>
+    </div>
+    <div class="plan-sub">
+      <div class="plan-sub-letter">C</div>
+      <div class="plan-sub-content">
+        <strong>IA, robotique et ubérisation — repenser le lien travail/revenu</strong>
+        <span>Destruction/création d'emplois · Revenu universel (Hamon) · Enjeu : protéger dans un monde du travail instable</span>
+        <div class="plan-keyword-row">
+          <span class="kw rouge">IA · automatisation</span>
+          <span class="kw">revenu universel</span>
+          <span class="kw vert">nouveaux métiers</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="plan-conclusion">
+    <div class="plan-conclusion-title">Conclusion · 30 sec</div>
+    <p><strong>Bilan :</strong> Repenser le travail est nécessaire mais insuffisant. Les réformes depuis 30 ans (35h, CICE, apprentissage, flexibilité) ont agi sur le chômage mais ont aussi créé de la précarité. Il faut distinguer les réponses conjoncturelles et structurelles.</p>
+    <br>
+    <p><strong>Ouverture :</strong> Face à l'IA et à la robotisation, la vraie question devient : faut-il découpler revenu et emploi ? Le revenu universel de Benoît Hamon ouvre ce débat — protéger les individus dans un monde où l'emploi stable n'est plus garanti.</p>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+     TAB 2 : DISCOURS
+════════════════════════════════════════ -->
+<div id="discours" class="tab-content">
+
+  <!-- INTRODUCTION -->
+  <div class="speech-block">
+    <div class="speech-eyebrow intro">Introduction · 1 min 30</div>
+    <div class="speech-title">Accroche, définitions & problématique</div>
+    <div class="speech-text">
+      <p>Depuis plusieurs décennies, le chômage demeure l'un des problèmes économiques et sociaux les plus persistants en France. Il ne se résume pas à l'absence d'emploi : il entraîne une perte de revenu, une perte de confiance en soi, et parfois une véritable exclusion sociale. En SES, on définit le chômage comme la situation d'une personne <strong>sans emploi, disponible pour travailler et qui en recherche activement un</strong>, selon les critères du Bureau International du Travail. On le mesure à travers le <strong>taux de chômage</strong>, c'est-à-dire la part des chômeurs dans la population active.</p>
+
+      <div class="def-box">
+        <span class="def-label">À retenir</span>
+        Taux de chômage = chômeurs / population active × 100<br>
+        Taux d'emploi = personnes en emploi / population en âge de travailler × 100<br>
+        Sous-emploi = personnes à temps partiel souhaitant travailler davantage
+      </div>
+
+      <p>Mais regarder seulement le taux de chômage ne suffit pas. Il faut aussi s'intéresser au <strong>taux d'emploi</strong> et au <strong>sous-emploi</strong> : des personnes peuvent sortir du chômage mais occuper des emplois précaires, à temps partiel subi, ou insuffisamment rémunérés. Réduire le chômage ne signifie donc pas toujours améliorer réellement la situation des travailleurs.</p>
+
+      <p>Les gouvernements successifs ont cherché à lutter contre le chômage en agissant sur le travail lui-même : sa durée, son coût, ses règles, ses contrats, la formation des travailleurs. Pourtant, le chômage — qu'il soit structurel ou conjoncturel — reste un défi majeur.</p>
+
+      <div class="highlight-box">
+        <strong>Problématique :</strong> Faut-il repenser le travail pour réduire le chômage ?
+      </div>
+
+      <p>Pour y répondre, je montrerai d'abord que repenser le travail peut effectivement favoriser l'emploi. Ensuite, j'analyserai comment ces transformations peuvent aussi générer de la précarité. Enfin, j'expliquerai pourquoi il faut penser le chômage de façon plus large, en distinguant chômage conjoncturel et structurel, et en intégrant les mutations à venir.</p>
+    </div>
+  </div>
+
+  <div class="speech-hr"></div>
+
+  <!-- PARTIE I -->
+  <div class="speech-block">
+    <div class="speech-eyebrow partie">Partie I · 2 min 30</div>
+    <div class="speech-title">Repenser le travail peut favoriser l'emploi</div>
+
+    <div class="speech-subtitle">A — Le partage du temps de travail : les 35 heures</div>
+    <div class="speech-text">
+      <p>Un premier exemple majeur est celui des <strong>35 heures</strong>, mises en place à la fin des années 1990 sous le gouvernement de <span class="politique-tag pt-rouge">Lionel Jospin</span>, avec <span class="politique-tag pt-ocre">Martine Aubry</span> comme ministre du Travail. L'idée repose sur une logique simple : en réduisant la durée légale du travail de 39 à 35 heures, on oblige les entreprises à recruter davantage pour maintenir leur niveau de production.</p>
+      <p>Cette réforme illustre la logique du <strong>partage du travail</strong> : si la quantité de travail disponible est fixe, réduire la part de chacun permet d'en distribuer une part à des personnes sans emploi. C'est aussi une réflexion sur la place du travail dans la société et sur l'équilibre entre vie professionnelle et vie personnelle.</p>
+    </div>
+
+    <div class="speech-subtitle">B — Réduire le coût du travail : le CICE</div>
+    <div class="speech-text">
+      <p>Une autre manière de repenser le travail consiste à agir sur son <strong>coût</strong>. En SES, le coût du travail correspond à ce que coûte réellement un salarié à l'employeur : salaire net, cotisations salariales et patronales. Si ce coût est jugé trop élevé, des entreprises peuvent hésiter à embaucher, surtout pour les emplois peu qualifiés.</p>
+      <p>C'est la logique du <strong>CICE</strong> <span class="politique-tag pt-rouge">Crédit d'Impôt Compétitivité Emploi</span>, mis en place sous <span class="politique-tag pt-ocre">François Hollande</span>. En allégeant les charges des entreprises, l'objectif était de les rendre plus compétitives et de les inciter à recruter. C'est une politique de l'offre : on n'agit pas sur la consommation, mais on aide les entreprises pour qu'elles produisent et embauchent davantage.</p>
+    </div>
+
+    <div class="speech-subtitle">C — La formation et l'apprentissage : la réforme Pénicaud 2018</div>
+    <div class="speech-text">
+      <p>Sous <span class="politique-tag pt-rouge">Emmanuel Macron</span>, l'un des leviers les plus importants est le développement de l'apprentissage et de la formation professionnelle, porté par <span class="politique-tag pt-ocre">Muriel Pénicaud</span>. Cette réforme s'attaque à une cause profonde du chômage : le <strong>problème d'appariement</strong> entre l'offre et la demande de travail.</p>
+
+      <div class="highlight-box vert">
+        Si une entreprise cherche des techniciens, des soignants ou des développeurs, mais que les chômeurs n'ont pas ces compétences, il peut y avoir du chômage <em>malgré</em> des emplois disponibles. C'est le cœur du <strong>chômage structurel</strong>.
+      </div>
+
+      <p>La formation et l'apprentissage permettent de réduire cette inadéquation en dotant les individus des compétences réellement demandées par les entreprises.</p>
+    </div>
+  </div>
+
+  <div class="transition-box">
+    <div class="trans-label">Transition I → II</div>
+    <p>Repenser le travail peut donc favoriser l'emploi, que ce soit par le partage du temps de travail, la réduction du coût du travail ou la formation. Mais ces politiques ont-elles toujours les effets escomptés ? Nous allons voir qu'elles peuvent aussi fragiliser les travailleurs et produire de la précarité.</p>
+  </div>
+
+  <!-- PARTIE II -->
+  <div class="speech-block">
+    <div class="speech-eyebrow partie">Partie II · 2 min 30</div>
+    <div class="speech-title">Ces transformations peuvent générer de la précarité</div>
+
+    <div class="speech-subtitle">A — Le CPE : quand la flexibilité menace la protection</div>
+    <div class="speech-text">
+      <p>En 2006, <span class="politique-tag pt-rouge">Dominique de Villepin</span> propose le <strong>Contrat Première Embauche</strong>, destiné aux jeunes de moins de 26 ans. L'objectif était de faciliter leur embauche en réduisant les contraintes pesant sur les employeurs. Mais ce contrat a provoqué une contestation massive — étudiants, lycéens, syndicats — car il donnait à l'employeur une grande liberté de rupture sans justification pendant une longue période. Le CPE a finalement été retiré.</p>
+      <p>Cet exemple illustre une tension fondamentale en économie du travail : <strong>la flexibilité peut théoriquement encourager l'embauche, mais elle peut aussi précariser les travailleurs</strong>. Les institutions du marché du travail — règles de licenciement, salaire minimum, contrats — protègent les salariés, mais certains économistes estiment qu'elles freinent aussi les recrutements si elles sont trop rigides.</p>
+    </div>
+
+    <div class="speech-subtitle">B — Loi El Khomri et ordonnances Macron : flexibiliser le droit du travail</div>
+    <div class="speech-text">
+      <p>Cette logique de flexibilisation se retrouve ensuite avec la <strong>loi El Khomri</strong> <span class="politique-tag pt-rouge">2016</span> sous François Hollande, qui donne plus de place aux accords d'entreprise, puis avec les <strong>ordonnances Travail de 2017</strong> sous Emmanuel Macron. Dans les deux cas, il s'agit de permettre aux entreprises de s'adapter plus facilement à leur situation économique.</p>
+      <p>Ces réformes ont divisé : certains y voient un moyen de lever les rigidités qui freinent l'embauche, d'autres une remise en cause des protections collectives des salariés. Ce débat reflète une question centrale en SES : jusqu'où peut-on flexibiliser le marché du travail sans fragiliser les travailleurs ?</p>
+    </div>
+
+    <div class="speech-subtitle">C — L'ubérisation : réduire le chômage visible sans réduire la précarité</div>
+    <div class="speech-text">
+      <p>Enfin, avec le statut d'auto-entrepreneur et les plateformes numériques, on assiste à ce qu'on appelle l'<strong>ubérisation</strong> du travail. Des travailleurs deviennent formellement indépendants — livreurs, chauffeurs, prestataires — ce qui les fait sortir des statistiques du chômage. Mais ils n'ont plus les protections d'un salarié : revenus irréguliers, absence de droits sociaux stables, dépendance à une plateforme.</p>
+
+      <div class="highlight-box">
+        <strong>Point clé :</strong> On peut réduire le taux de chômage tout en augmentant le nombre de travailleurs pauvres ou en sous-emploi. C'est pourquoi il faut regarder la <em>qualité</em> des emplois créés, pas seulement leur nombre.
+      </div>
+    </div>
+  </div>
+
+  <div class="transition-box">
+    <div class="trans-label">Transition II → III</div>
+    <p>Repenser le travail peut donc réduire le chômage, mais pas toujours de façon durable ni équitable. Pour comprendre pourquoi, il faut distinguer deux formes de chômage aux causes différentes, qui appellent des réponses différentes.</p>
+  </div>
+
+  <!-- PARTIE III -->
+  <div class="speech-block">
+    <div class="speech-eyebrow partie">Partie III · 2 min 30</div>
+    <div class="speech-title">Distinguer chômage conjoncturel et structurel pour répondre efficacement</div>
+
+    <div class="speech-subtitle">A — Le chômage conjoncturel : agir sur la demande globale</div>
+    <div class="speech-text">
+      <p>Le <strong>chômage conjoncturel</strong> dépend de la situation économique du moment. En période de crise ou de ralentissement, les entreprises vendent moins, produisent moins et embauchent moins. La cause principale est une <strong>insuffisance de la demande globale</strong> — c'est-à-dire l'ensemble de la demande adressée aux entreprises : consommation des ménages, investissement, dépenses publiques, exportations.</p>
+      <p>Pour y répondre, l'État peut mettre en place des <strong>politiques de relance</strong> : soutien à la consommation, investissement public, ou dispositifs de protection de l'emploi comme le <strong>chômage partiel</strong>, qui permet aux entreprises de conserver leurs salariés en période de difficultés temporaires. Ces mesures sont adaptées à la conjoncture, pas au long terme.</p>
+    </div>
+
+    <div class="speech-subtitle">B — Le chômage structurel : des réformes de fond</div>
+    <div class="speech-text">
+      <p>Le <strong>chômage structurel</strong> est plus profond. Il ne disparaît pas avec la reprise économique. Il vient de problèmes durables : <em>inadéquation entre qualifications des travailleurs et besoins des entreprises</em>, difficultés de mobilité géographique, ou règles du marché du travail inadaptées.</p>
+      <p>Ce chômage demande des politiques de long terme : formation, apprentissage, reconversion, orientation professionnelle. Il peut toujours subsister un niveau résiduel de chômage lié aux transformations permanentes de l'économie — c'est ce qu'on appelle parfois le <strong>chômage frictionnel</strong> ou d'appariement.</p>
+    </div>
+
+    <div class="speech-subtitle">C — Les mutations à venir : IA, robotique et revenu universel</div>
+    <div class="speech-text">
+      <p>Aujourd'hui, le numérique, l'<strong>intelligence artificielle</strong>, la robotique et l'automatisation transforment profondément le marché du travail. Certains emplois sont détruits, d'autres transformés, et de nouveaux métiers apparaissent. Le problème n'est plus seulement de réduire le chômage à court terme, mais de <strong>préparer les individus à un monde du travail plus instable</strong>.</p>
+
+      <div class="highlight-box ocre">
+        Face à ces mutations, la question ne se limite plus à "comment créer des emplois", mais aussi "comment protéger les individus quand l'emploi stable n'est plus garanti ?". C'est l'enjeu du <strong>revenu universel</strong> défendu par Benoît Hamon : découpler revenu et emploi pour sécuriser les individus dans une société où le travail se transforme en profondeur.
+      </div>
+    </div>
+  </div>
+
+  <div class="speech-hr"></div>
+
+  <!-- CONCLUSION -->
+  <div class="speech-block">
+    <div class="speech-eyebrow conclu">Conclusion · 30 sec</div>
+    <div class="speech-title">Bilan & ouverture</div>
+    <div class="speech-text">
+      <p>En conclusion, <strong>repenser le travail est nécessaire pour réduire le chômage, mais insuffisant pour le supprimer totalement</strong>. Les 35 heures d'Aubry, le CICE de Hollande, l'apprentissage de Pénicaud, les ordonnances de Macron : chacune de ces réformes a apporté des réponses partielles, mais a aussi révélé ses limites — notamment le risque de créer des emplois précaires plutôt que durables.</p>
+      <p>Il faut donc distinguer les réponses conjoncturelles, adaptées aux crises, et les réformes structurelles de long terme. Et face à l'intelligence artificielle et à la robotisation, la vraie question de demain sera peut-être non plus "comment réduire le chômage" mais "comment protéger les individus dans un monde où l'emploi stable n'est plus la norme".</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════
+     TAB 3 : QUESTIONS
+════════════════════════════════════════ -->
+<div id="questions" class="tab-content">
+
+  <div class="q-intro">
+    Le jury dispose de 10 minutes pour poser des questions. Il cherchera à tester ta maîtrise des concepts, la solidité de tes exemples et ta capacité à nuancer. Voici les questions les plus probables, avec des pistes de réponses développées.
+  </div>
+
+  <!-- CAT 1 -->
+  <div class="q-cat">
+    <div class="q-cat-label">Sur les concepts clés</div>
+
+    <div class="q-item" onclick="toggleQ(this)">
+      <div class="q-header">
+        <span class="q-num">01</span>
+        <span class="q-text">Quelle est la différence entre taux de chômage et taux d'emploi ? Pourquoi les deux indicateurs sont-ils nécessaires ?</span>
+        <span class="q-chevron">▾</span>
+      </div>
+      <div class="q-answer">
+        Le <strong>taux de chômage</strong> mesure la part des chômeurs dans la population active (personnes en emploi + personnes au chômage). Il peut baisser non pas parce que des gens trouvent un emploi, mais parce qu'ils abandonnent leur recherche et sortent de la population active — c'est ce qu'on appelle le halo du chômage. Le <strong>taux d'emploi</strong>, lui, mesure la part des personnes en âge de travailler qui occupent effectivement un emploi, quel que soit leur statut. Les deux sont complémentaires : on peut avoir un taux de chômage en baisse et un taux d'emploi stagnant si des personnes découragées arrêtent de chercher du travail. C'est pourquoi il ne faut jamais se limiter à un seul indicateur.
+      </div>
+    </div>
+
+    <div class="q-item" onclick="toggleQ(this)">
+      <div class="q-header">
+        <span class="q-num">02</span>
+        <span class="q-text">Pouvez-vous expliquer précisément ce qu'est le chômage structurel et en quoi il diffère du chômage conjoncturel ?</span>
+        <span class="q-chevron">▾</span>
+      </div>
+      <div class="q-answer">
+        Le <strong>chômage conjoncturel</strong> est lié à la situation économique du moment : en période de récession, la demande globale baisse, les entreprises produisent moins et licencient. Il disparaît naturellement quand l'économie repart. Le <strong>chômage structurel</strong>, lui, persiste même en période de croissance : il vient de causes profondes comme l'inadéquation entre les qualifications des chômeurs et les besoins des entreprises, les difficultés de mobilité géographique, ou certaines rigidités du marché du travail. Il ne se résout pas avec la reprise, mais demande des réformes de fond : formation, reconversion, apprentissage. La distinction est importante car les politiques à mettre en place sont radicalement différentes dans les deux cas.
+      </div>
+    </div>
+
+    <div class="q-item" onclick="toggleQ(this)">
+      <div class="q-header">
+        <span class="q-num">03</span>
+        <span class="q-text">Qu'est-ce qu'une politique de l'offre ? En quoi s'oppose-t-elle à une politique de la demande ?</span>
+        <span class="q-chevron">▾</span>
+      </div>
+      <div class="q-answer">
+        Une <strong>politique de l'offre</strong> cherche à améliorer la compétitivité et la productivité des entreprises pour qu'elles produisent davantage et embauchent plus. Elle agit sur les coûts de production : allègements de charges, flexibilisation du droit du travail, formation. Le CICE en est un exemple typique. Une <strong>politique de la demande</strong>, d'inspiration keynésienne, cherche au contraire à soutenir la consommation et l'investissement pour stimuler l'activité économique et donc l'emploi. Les deux approches ne s'excluent pas nécessairement, mais elles reflètent des visions différentes du fonctionnement du marché du travail et de la cause principale du chômage.
+      </div>
+    </div>
+  </div>
+
+  <!-- CAT 2 -->
+  <div class="q-cat">
+    <div class="q-cat-label">Sur les exemples politiques</div>
+
+    <div class="q-item" onclick="toggleQ(this)">
+      <div class="q-header">
+        <span class="q-num">04</span>
+        <span class="q-text">Les 35 heures ont-elles vraiment réduit le chômage ? N'y a-t-il pas des effets négatifs à mentionner ?</span>
+        <span class="q-chevron">▾</span>
+      </div>
+      <div class="q-answer">
+        Les 35 heures ont effectivement créé des emplois dans un premier temps, notamment dans les secteurs où le temps de travail pouvait être facilement réorganisé. Mais des études économiques ont montré des effets ambigus : certaines entreprises ont compensé la baisse du temps de travail par des gains de productivité plutôt que par des embauches. De plus, la réforme a augmenté le coût unitaire du travail pour les entreprises, ce qui peut décourager certaines embauches. Des économistes ont aussi critiqué l'hypothèse de départ — que la quantité de travail est fixe à partager — car en réalité la création de richesse et donc d'emplois n'est pas un "gâteau" de taille fixe. La réforme illustre bien la difficulté à évaluer les politiques de l'emploi, dont les effets sont souvent complexes et partiels.
+      </div>
+    </div>
+
+    <div class="q-item" onclick="toggleQ(this)">
+      <div class="q-header">
+        <span class="q-num">05</span>
+        <span class="q-text">Pourquoi le CPE a-t-il été retiré alors qu'il visait à faciliter l'embauche des jeunes ?</span>
+        <span class="q-chevron">▾</span>
+      </div>
+      <div class="q-answer">
+        Le CPE illustre un paradoxe classique des politiques de l'emploi : une mesure qui vise à favoriser l'embauche peut être perçue comme une menace pour la sécurité des travailleurs. Le CPE permettait à l'employeur de rompre le contrat sans justification pendant deux ans, ce que les jeunes et les syndicats ont vécu comme une instabilité inacceptable à l'entrée dans la vie active. La mobilisation massive qui a suivi a montré que l'acceptabilité sociale d'une réforme est aussi importante que sa logique économique. C'est un exemple de tension entre <strong>flexibilité</strong> (ce que demandent les employeurs pour embaucher) et <strong>sécurité</strong> (ce que demandent les travailleurs pour s'engager dans la vie active). Le concept de "flexicurité", développé dans les pays nordiques, cherche justement à concilier les deux.
+      </div>
+    </div>
+
+    <div class="q-item" onclick="toggleQ(this)">
+      <div class="q-header">
+        <span class="q-num">06</span>
+        <span class="q-text">Qu'est-ce que la "flexicurité" ? Est-ce une solution au problème posé dans votre sujet ?</span>
+        <span class="q-chevron">▾</span>
+      </div>
+      <div class="q-answer">
+        La <strong>flexicurité</strong> est un modèle né dans les pays nordiques, notamment au Danemark, qui cherche à combiner flexibilité du marché du travail et sécurité pour les travailleurs. Concrètement : les entreprises peuvent embaucher et licencier facilement (flexibilité), mais les chômeurs bénéficient d'indemnités élevées et d'un accompagnement intensif vers l'emploi (sécurité), et l'État investit massivement dans la formation continue. C'est une réponse aux tensions que j'ai décrites dans ma partie II. Cela dit, ce modèle est difficile à transposer directement en France car il implique des niveaux de financement public très importants et une culture du dialogue social différente. Il reste une référence utile pour montrer qu'il est possible de repenser le travail sans sacrifier la protection des travailleurs.
+      </div>
+    </div>
+  </div>
+
+  <!-- CAT 3 -->
+  <div class="q-cat">
+    <div class="q-cat-label">Sur l'actualité et les limites</div>
+
+    <div class="q-item" onclick="toggleQ(this)">
+      <div class="q-header">
+        <span class="q-num">07</span>
+        <span class="q-text">L'intelligence artificielle va-t-elle nécessairement augmenter le chômage ?</span>
+        <span class="q-chevron">▾</span>
+      </div>
+      <div class="q-answer">
+        C'est un débat ouvert entre économistes. D'un côté, l'histoire montre que les révolutions technologiques détruisent certains emplois mais en créent de nouveaux — la révolution industrielle a transformé le travail mais n'a pas supprimé l'emploi. De l'autre, certains économistes comme Daron Acemoglu estiment que l'IA actuelle a tendance à automatiser des tâches routinières sans créer suffisamment de nouveaux emplois en compensation. Ce qui est certain c'est que l'IA va <strong>transformer</strong> profondément les métiers, même si elle ne les supprime pas tous. Cela renforce l'importance de la formation continue et de la reconversion que j'évoque dans ma partie III : l'enjeu n'est pas seulement de créer des emplois, mais de préparer les individus à des métiers en constante évolution.
+      </div>
+    </div>
+
+    <div class="q-item" onclick="toggleQ(this)">
+      <div class="q-header">
+        <span class="q-num">08</span>
+        <span class="q-text">Le revenu universel est-il une solution réaliste ? Quels sont ses limites ?</span>
+        <span class="q-chevron">▾</span>
+      </div>
+      <div class="q-answer">
+        Le revenu universel — proposé notamment par Benoît Hamon en 2017 — consiste à verser à chaque citoyen un revenu de base, sans condition, qu'il travaille ou non. L'idée est de sécuriser les individus dans un monde où l'emploi stable est moins garanti. Ses <strong>avantages théoriques</strong> : simplification des aides sociales, réduction de la pauvreté, liberté de refuser des emplois précaires. Ses <strong>limites</strong> : coût budgétaire très élevé (plusieurs centaines de milliards en France), risque de décourager le travail si le montant est élevé, et débat sur son financement. Des expérimentations ont eu lieu en Finlande ou au Kenya avec des résultats nuancés. Ce n'est donc pas une solution miracle, mais c'est une piste de réflexion importante face aux mutations du travail — c'est pourquoi je l'évoque en ouverture plutôt que comme réponse centrale.
+      </div>
+    </div>
+
+    <div class="q-item" onclick="toggleQ(this)">
+      <div class="q-header">
+        <span class="q-num">09</span>
+        <span class="q-text">Selon vous, quelle est la politique la plus efficace parmi celles que vous avez citées ?</span>
+        <span class="q-chevron">▾</span>
+      </div>
+      <div class="q-answer">
+        Je dirais que c'est la réforme de l'apprentissage et de la formation professionnelle, pour plusieurs raisons. D'abord, elle s'attaque au chômage structurel, qui est le plus difficile à résorber et qui ne disparaît pas avec la reprise économique. Ensuite, elle agit sur les deux côtés du marché du travail à la fois : elle améliore l'employabilité des travailleurs (offre de travail) et répond aux besoins concrets des entreprises (demande de travail). Enfin, ses effets sont durables : contrairement à une baisse du coût du travail qui peut être remise en cause, une qualification acquise reste. Cela dit, cette politique a ses limites propres : elle demande du temps pour produire ses effets, elle ne résout pas le chômage conjoncturel, et elle suppose que les entreprises aient effectivement des postes à pourvoir. C'est pourquoi aucune politique prise isolément ne peut supprimer le chômage : elles doivent se combiner.
+      </div>
+    </div>
+
+    <div class="q-item" onclick="toggleQ(this)">
+      <div class="q-header">
+        <span class="q-num">10</span>
+        <span class="q-text">Pouvez-vous donner un exemple d'un pays qui a mieux réussi que la France à réduire son chômage structurel ?</span>
+        <span class="q-chevron">▾</span>
+      </div>
+      <div class="q-answer">
+        L'Allemagne est souvent citée comme exemple. Grâce aux réformes Hartz du début des années 2000, l'Allemagne a profondément réformé son marché du travail : flexibilisation des contrats, renforcement de l'accompagnement des chômeurs, développement massif de l'apprentissage dual (alternance école/entreprise). Le taux de chômage allemand est aujourd'hui structurellement plus bas que le taux français. Cependant, ce modèle a aussi été critiqué pour avoir développé des emplois à bas salaires (les "mini-jobs") et pour avoir creusé les inégalités salariales. On retrouve donc, même dans ce cas considéré comme un succès, la tension entre réduction du chômage et qualité des emplois créés — ce qui est précisément le cœur de la réponse à mon sujet.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</main>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+  function toggleQ(el) { el.classList.toggle('open'); }
+</script>
+</body>
+</html>
